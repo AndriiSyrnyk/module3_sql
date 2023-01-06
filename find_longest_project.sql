@@ -1,6 +1,6 @@
-SELECT name, DATEDIFF(month, start_date, finish_date) AS month_count
+SELECT CONCAT('Project', id) as name, DATEDIFF(month, start_date, finish_date) AS month_count
 FROM (
-  SELECT id, name, start_date, finish_date  
+  SELECT id, start_date, finish_date  
   FROM project
 )
 WHERE DATEDIFF(month, start_date, finish_date) = (
@@ -8,7 +8,7 @@ WHERE DATEDIFF(month, start_date, finish_date) = (
 	FROM (
 		SELECT id AS project_id, DATEDIFF(month, start_date, finish_date) AS month_count
 		FROM (
-			SELECT id, name, start_date, finish_date  
+			SELECT id, start_date, finish_date  
 			FROM project
 		)
 	)
